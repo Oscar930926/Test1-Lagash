@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  h1 #{title}
+  br
+
+  form(action="/completetask", method="post")
+    table.table.table-striped.table-bordered
+      tr
+        td Identificación
+        td Nombres
+      if (typeof tasks === "undefined")
+        tr
+          td
+      else
+        each task in tasks
+          tr
+            td #{task.identificacion}
+            td #{task.nombres}
+  hr
+  form.well(action="/addtask", method="post")
+    label Identificación:
+    input(name="identificacion", type="textbox")
+    label Nombres:
+    input(name="nombres", type="textbox")
+    label Primer Apellido:
+    input(name="apellido1", type="textbox")
+    label Segundo Apellido:
+    input(name="apellido2", type="textbox")
+    label Edad:
+    input(name="edad", type="textbox")
+    br
+    button.btn(type="submit") Agregar Persona
